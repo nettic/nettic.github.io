@@ -2,678 +2,97 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Innovationsprojekt – Insekten-Identifizierung</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Einfache, moderne Basisgestaltung -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insektenmonitoring.de - SmInReSy</title>
   <style>
-    :root {
-      --bg: #0b1120;
-      --bg-alt: #020617;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.12);
-      --text: #e5e7eb;
-      --text-muted: #9ca3af;
-      --card-bg: rgba(15, 23, 42, 0.85);
-      --border: rgba(148, 163, 184, 0.2);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #020617 100%);
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1rem;
-    }
-
-    .page {
-      max-width: 960px;
-      width: 100%;
-      background: linear-gradient(
-          145deg,
-          rgba(15, 23, 42, 0.95),
-          rgba(15, 23, 42, 0.97)
-        );
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      box-shadow:
-        0 22px 45px rgba(15, 23, 42, 0.9),
-        0 0 0 1px rgba(15, 23, 42, 0.8);
-      overflow: hidden;
-      backdrop-filter: blur(18px);
-    }
-
-    header {
-      padding: 1.5rem 2rem 1.25rem;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
-      background: radial-gradient(
-          circle at top left,
-          rgba(56, 189, 248, 0.12),
-          transparent 55%
-        ),
-        radial-gradient(
-          circle at top right,
-          rgba(251, 191, 36, 0.16),
-          transparent 55%
-        ),
-        rgba(15, 23, 42, 0.96);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .hero-image {
-      margin: 1.2rem 0 1.4rem;
-      text-align: center;
-    }
-
-    .hero-image img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 16px;
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-    }
-
-    .logo-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      background:
-        radial-gradient(circle at 30% 20%, #f9fafb 0, #e5e7eb 16%, transparent 45%),
-        conic-gradient(
-          from 200deg,
-          #22c55e,
-          #22c55e 32%,
-          #38bdf8 32%,
-          #38bdf8 64%,
-          #eab308 64%,
-          #eab308 100%
-        );
-      box-shadow:
-        0 0 0 2px rgba(15, 23, 42, 0.9),
-        0 0 0 6px rgba(56, 189, 248, 0.25),
-        0 16px 30px rgba(15, 23, 42, 0.9);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .logo-icon::after {
-      content: "";
-      position: absolute;
-      inset: 22%;
-      border-radius: inherit;
-      background:
-        radial-gradient(circle at 35% 25%, rgba(15, 23, 42, 0.9), transparent 60%),
-        radial-gradient(circle at 60% 75%, rgba(15, 23, 42, 0.8), transparent 60%);
-      mix-blend-mode: multiply;
-    }
-
-    .logo-text-title {
-      font-size: 1.05rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #e5e7eb;
-    }
-
-    .logo-text-sub {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    main {
-      padding: 2.25rem 2rem 2.5rem;
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 2rem;
-    }
-
-    @media (max-width: 780px) {
-      main {
-        grid-template-columns: minmax(0, 1fr);
-        padding: 1.75rem 1.5rem 2rem;
-      }
-
-      header {
-        padding: 1.25rem 1.5rem 1rem;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.18rem 0.6rem;
-      font-size: 0.78rem;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      border: 1px solid rgba(56, 189, 248, 0.45);
-      margin-bottom: 0.9rem;
-    }
-
-    .hero-eyebrow-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.23);
-    }
-
-    h1 {
-      font-size: clamp(2.1rem, 3vw, 2.7rem);
-      line-height: 1.15;
-      margin-bottom: 0.75rem;
-    }
-
-    h1 span {
-      color: var(--accent);
-    }
-
-    .hero-subtitle {
-      font-size: 0.98rem;
-      line-height: 1.6;
-      color: var(--text-muted);
-      max-width: 540px;
-      margin-bottom: 1.4rem;
-    }
-
-    .highlight {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    .tagline {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 1.8rem;
-    }
-
-    .tagline strong {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1.8rem;
-    }
-
-    .btn-primary,
-    .btn-ghost {
-      border-radius: 999px;
-      padding: 0.65rem 1.3rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      border: 1px solid transparent;
-      transition: all 0.18s ease-out;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      color: inherit;
-      background: none;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #0ea5e9, #22c55e);
-      color: #0b1120;
-      border-color: rgba(15, 23, 42, 0.8);
-      box-shadow:
-        0 14px 35px rgba(8, 47, 73, 0.6),
-        0 0 0 1px rgba(15, 23, 42, 0.8);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow:
-        0 18px 45px rgba(8, 47, 73, 0.8),
-        0 0 0 1px rgba(15, 23, 42, 0.8);
-      filter: brightness(1.05);
-    }
-
-    .btn-ghost {
-      border-color: rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.7);
-      color: var(--text-muted);
-    }
-
-    .btn-ghost:hover {
-      border-color: rgba(148, 163, 184, 0.9);
-      background: rgba(15, 23, 42, 0.95);
-      color: #e5e7eb;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem 1.5rem;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .hero-meta-item {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .meta-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.8);
-    }
-
-    .meta-dot.green {
-      background: #22c55e;
-      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.26);
-    }
-
-    .meta-label {
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.72rem;
-      color: #9ca3af;
-    }
-
-    .meta-value {
-      font-weight: 500;
-      color: #e5e7eb;
-    }
-
-    /* Rechte Spalte: „Forschungs-Karte“ */
-    .card {
-      background: radial-gradient(
-          circle at top left,
-          rgba(56, 189, 248, 0.18),
-          transparent 55%
-        ),
-        radial-gradient(
-          circle at bottom right,
-          rgba(34, 197, 94, 0.16),
-          transparent 55%
-        ),
-        var(--card-bg);
-      border-radius: 20px;
-      padding: 1.5rem 1.4rem 1.6rem;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(
-          circle at 10% 20%,
-          rgba(148, 163, 184, 0.25) 0,
-          transparent 40%
-        ),
-        radial-gradient(
-          circle at 80% 80%,
-          rgba(148, 163, 184, 0.2) 0,
-          transparent 40%
-        );
-      opacity: 0.25;
-      mix-blend-mode: soft-light;
-      pointer-events: none;
-    }
-
-    .card-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.8rem;
-    }
-
-    .card-title {
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: #9ca3af;
-    }
-
-    .card-badge {
-      font-size: 0.7rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(34, 197, 94, 0.8);
-      color: #bbf7d0;
-      background: rgba(22, 163, 74, 0.18);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    .card-main-title {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .card-main-subtitle {
-      font-size: 0.88rem;
-      color: #cbd5f5;
-      margin-bottom: 1.2rem;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem;
-      margin-bottom: 1.3rem;
-    }
-
-    .chip {
-      border-radius: 14px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 0.45rem 0.6rem;
-      font-size: 0.78rem;
-      color: #d1d5db;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: rgba(15, 23, 42, 0.85);
-    }
-
-    .chip-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #38bdf8;
-    }
-
-    .chip-dot.yellow {
-      background: #facc15;
-    }
-
-    .chip-dot.green {
-      background: #22c55e;
-    }
-
-    .chip-dot.red {
-      background: #f97316;
-    }
-
-    .card-text {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      margin-bottom: 1rem;
-    }
-
-    .card-text strong {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-    }
-
-    .pill {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-      padding: 0.25rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.55);
-      color: #e5e7eb;
-      background: rgba(15, 23, 42, 0.85);
-    }
-
-    footer {
-      padding: 0.9rem 2rem 1.1rem;
-      border-top: 1st solid rgba(148, 163, 184, 0.18);
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 640px) {
-      footer {
-        padding: 0.9rem 1.5rem 1.2rem;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    .footer-left span {
-      color: #e5e7eb;
-    }
-
-    .footer-right {
-      display: flex;
-      gap: 0.7rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-link {
-      text-decoration: none;
-      color: var(--text-muted);
-      border-bottom: 1px dashed rgba(148, 163, 184, 0.4);
-      padding-bottom: 1px;
-      font-size: 0.78rem;
-    }
-
-    .footer-link:hover {
-      color: #e5e7eb;
-      border-color: rgba(248, 250, 252, 0.8);
-    }
+    :root{--bg:#f7f6f2;--surface:#ffffff;--surface2:#eef3ef;--text:#1f231f;--muted:#5f6660;--line:#d9dfd8;--accent:#2d6b57;--accent2:#7a9b84;--shadow:0 10px 30px rgba(31,35,31,.08);--radius:18px;--max:1120px}
+    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a {
+  color: var(--accent);           /* oder eine eigene Linkfarbe */
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.15em;
+}
+a:hover {
+  color: var(--accent2);          /* etwas hellere/kräftigere Hover-Farbe */} 
+  .wrap{width:min(calc(100% - 2rem),var(--max));margin:auto}
+    header{position:sticky;top:0;background:rgba(247,246,242,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
+    .top{display:flex;justify-content:space-between;align-items:center;padding:16px 0;gap:16px} nav{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:.95rem}
+    .hero{padding:72px 0 40px;display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:end}
+    h1,h2,h3{margin:0;line-height:1.08} h1{font-size:clamp(2.1rem,4vw,3.8rem);max-width:12ch} h2{font-size:clamp(1.5rem,2.2vw,2.2rem)} h3{font-size:1.1rem}
+    .lead{color:var(--muted);max-width:62ch;margin:18px 0 0} .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:999px;font-weight:700;border:1px solid var(--line);background:var(--surface)}
+    .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .card,.panel,.news{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero-card{padding:28px}.stat{display:grid;grid-template-columns:52px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--line)} .stat:first-of-type{border-top:0;padding-top:0}
+    .num{font-size:1.6rem;color:var(--accent);font-weight:700}
+    section{padding:42px 0} .section-head{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;margin-bottom:24px} .section-head p{margin:0;color:var(--muted)}
+    .grid3,.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{padding:22px} .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--surface2);color:#4c6552;font-size:.78rem;font-weight:700;margin-bottom:14px}
+    .timeline{padding:22px} .row{display:grid;grid-template-columns:140px 1fr;gap:18px;padding:16px 0;border-top:1px solid var(--line)} .row:first-child{border-top:0;padding-top:0} time{color:var(--muted);font-weight:700}
+    .news-grid .news{padding:22px;display:flex;flex-direction:column;gap:12px} .meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+    .twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px} .panel{padding:24px} ul{margin:14px 0 0;padding:0} li{list-style:none;margin:10px 0;padding-left:18px;position:relative;color:var(--muted)} li:before{content:'•';position:absolute;left:0;color:var(--accent)}
+    footer{padding:28px 0 50px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+    @media (max-width:900px){.hero,.section-head,.grid3,.news-grid,.twocol,.row{grid-template-columns:1fr} nav{display:none}}
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div class="logo">
-        <div class="logo-icon" aria-hidden="true"></div>
-        <div>
-          <div class="logo-text-title">Insekten-Identifizierung</div>
-          <div class="logo-text-sub">Innovationsprojekt · Biodiversität, KI &amp; Kommunikation</div>
-        </div>
-      </div>
-      <div>
-        <div class="meta-label">Status</div>
-        <div class="meta-value">Aktives Innovationsprojekt</div>
-      </div>
-    </header>
-
-    <main>
-      <!-- Linke Spalte: Haupttext -->
-      <section aria-labelledby="projekt-titel">
-        <div class="hero-eyebrow">
-          <span class="hero-eyebrow-dot"></span>
-          Innovationsprojekt
-        </div>
-
-        <h1 id="projekt-titel">
-          Insekten&nbsp;<span>identifizieren</span> –
-          mit ihnen ins Gespräch kommen
-        </h1>
+<header><div class="wrap top"><strong>Insektenmonitoring.de - SmInReSy</strong><nav><a href="#projekt">Projekt</a><a href="#methodik">Methodik</a><a href="#news">News</a><a href="#kontext">Kontext</a><a href="#kontakt">Kontakt</a></nav></div></header>
+<main class="wrap">
+  <section class="hero" id="top">
+    <div>
+      <div class="tag">Forschungsprojekt · Monitoring · KI · Open Source</div>
+      <h1>Automatisiertes Insektenmonitoring.</h1>
+      <p class="lead">Dieses Projekt beschäftigt sich mit der automatisierten Identifizierung von Insekten – und geht bewusst einen Schritt weiter: Durch die eindeutige Bestimmung soll eine Grundlage geschaffen werden, um artspezifische Kommunikationsformen zu erforschen und zu erproben. Ziel ist es, Insekten nicht nur zu erkennen, sondern in Zukunft auch gezielt durch ein Leitsystem anzusprechen, auf sie einzugehen und bestimmte „Bitten“ oder Forderungen zu vermitteln.</p>
+      <div class="btns"><a class="btn primary" href="#projekt">Zum Projekt</a><a class="btn" href="#news">Zu den News</a></div>
+    </div>
+    <aside class="card hero-card">
+      
+          <img src="https://www.th-owl.de/files/_processed_/5/d/csm_bonkers_image_a_machine_illuminating_569624dab7.png" alt="Visualisierung eines maschinellen Systems zur Insekten-Identifizierung">
         
-        <div class="hero-image">
-          <img src="https://www.th-owl.de/files/_processed_/5/d/csm_bonkers_image_a_machine_illuminating_569624dab7.png"
-          alt="Visualisierung eines maschinellen Systems zur Insekten-Identifizierung">
-        </div>
-        
-        <p class="hero-subtitle">
-          Dieses Projekt beschäftigt sich mit der
-          <span class="highlight">automatisierten Identifizierung von Insekten</span>
-          – und geht bewusst einen Schritt weiter: Durch die eindeutige
-          Bestimmung soll eine Grundlage geschaffen werden, um
-          <span class="highlight">artspezifische Kommunikationsformen</span>
-          zu erforschen und zu erproben. Ziel ist es, Insekten nicht nur zu
-          erkennen, sondern in Zukunft auch gezielt durch ein Leitsystem anzusprechen, auf sie
-          einzugehen und bestimmte „Bitten“ oder Forderungen zu vermitteln.
-        </p>
+    </aside>
+  </section>
 
-        <p class="tagline">
-          Im Mittelpunkt stehen <strong>präzise Erkennung</strong>,
-          <strong>achtsame Interaktion mit Insekten</strong> und die
-          <strong>Vision einer respektvollen, artgerechten Kommunikation</strong>.
-        </p>
+  <section id="projekt">
+    <div class="section-head"><h2>Projekt</h2><p>Das Innovationsprojekt <a href="https://www.th-owl.de/forschung/transfer/trinnovation-owl/innovationsprojekte/smart-insect-rescue-system">SmInReSy</a> besteht aus der Verbindung von Insektenmonitoring, automatisierter Identifizierung und technischer Interaktion. Weitere Informationen zu den Innovationsprojekten der TH OWL finden sich auf der <a href="https://www.th-owl.de/forschung/transfer/trinnovation-owl/innovationsprojekte/">Seite von TRiNNOVATION – Innovationsprojekte (TH OWL)</a>.</p></div>
+    <div class="grid3">
+      <article class="card"><div class="tag">Zielsetzung</div><h3>Belastbare Beobachtung</h3><p style="color:var(--muted)">Verlässliche Erfassung und Auswertung statt bloßer Technikdemonstration.</p></article>
+      <article class="card"><div class="tag">Technik</div><h3>Offene Ansätze</h3><p style="color:var(--muted)">Der Aufbau ist teilweise durch den Open-Source-Ansatz von Max Sittinger und das KInsecta-Modell inspiriert.</p></article>
+      <article class="card"><div class="tag">Wirkung</div><h3>Interaktion</h3><p style="color:var(--muted)">Die Verständigung zwischen Tier und Computer soll beforscht werden.</p></article>
+    </div>
+  </section>
 
-        <div class="hero-actions">
-          <a href="#projekt-beschreibung" class="btn-primary">
-            Mehr über das Projekt
-          </a>
-          <a href="mailto:sebastian.becker@th-owl.de?subject=Forschungsprojekt%20Insekten-Identifizierung"
-             class="btn-ghost">
-            Kontakt aufnehmen
-          </a>
-        </div>
+  <section id="methodik">
+    <div class="section-head"><h2>Methodik und Aufbau</h2><p>Der Ablauf ist bewusst in Bausteine gegliedert. So wird erkennbar, wie aus Feldarbeit, Datenerhebung und Auswertung ein belastbarer Monitoring-Workflow entsteht.</p></div>
+    <div class="panel timeline">
+      <div class="row"><time>Baustein 1</time><div><strong>Feld- und Sensorsysteme definieren.</strong><div style="color:var(--muted)">Messlogik, Datenquellen und relevante Insektengruppen werden nachvollziehbar beschrieben.</div></div></div>
+      <div class="row"><time>Baustein 2</time><div><strong>Daten aufnehmen und strukturieren.</strong><div style="color:var(--muted)">Bild-, Sensor- oder Beobachtungsdaten werden in einen konsistenten Workflow überführt.</div></div></div>
+      <div class="row"><time>Baustein 3</time><div><strong>Modelle prüfen und Prüfung auf Interaktionsmöglichkeiten.</strong><div style="color:var(--muted)">Die technische Auswertung bleibt an biologischen Fragestellungen orientiert.</div></div></div>
+    </div>
+  </section>
 
-        <div class="hero-meta">
-          <div class="hero-meta-item">
-            <span class="meta-dot green"></span>
-            <span class="meta-label">Thema</span>
-            <span class="meta-value">Insekten-Identifizierung &amp; Kommunikation</span>
-          </div>
-          <div class="hero-meta-item">
-            <span class="meta-dot"></span>
-            <span class="meta-label">Schwerpunkt</span>
-            <span class="meta-value">Biodiversität, KI, Verhaltensforschung</span>
-          </div>
-        </div>
-      </section>
+  <section id="news">
+    <div class="section-head"><h2>News</h2><p>Die News-Sektion bietet Übersicht zu aktuellen Entwicklungen im Projekt .</p></div>
+    <div class="news-grid">
+      <article class="news"><div class="meta"><span>07.2026</span><span>Kooperation</span></div><h3>Kooperation mit der Brand Stiftung</h3><p style="color:var(--muted)">Seit Juli 2026 besteht die Kooperation mit der Brand Stiftung. Prof. Johannes Üpping (TH OWL) ist neben Gründungsmitglied der Stiftung nun auch als Forschungspartner von SmInReSy aktiv.</p></article>
+      <article class="news"><div class="meta"><span>07.2026</span><span>Tagung</span></div><h3>Einladung zur ACI-Tagung</h3><p style="color:var(--muted)">Für Dezember wurde ich eingeladen, mein SIL-Konzept auf der <a href="https://www.aciconf.org/aci2026">ACI-Tagung</a> (Animal-Computer Interaction) per Poster vorzustellen.</p></article>
+      <article class="news"><div class="meta"><span>04.2026</span><span>Tagung</span></div><h3>Besuch in Leuven (Belgien)</h3><p style="color:var(--muted)">Ich war vertreten auf dem 1. international day of insects um mich mit den Fachbesuchern auszutauschen und das Team um Dr. Reckhaus wieder zu treffen, die auch die Abteilung "insect-respect" betreiben.</p></article>
+    </div>
+  </section>
 
-      <!-- Rechte Spalte: Kompakte Projektkarte -->
-      <aside aria-label="Kurzübersicht Forschungsprojekt">
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-header">
-              <div class="card-title">Projektübersicht</div>
-              <div class="card-badge">In Bearbeitung</div>
-            </div>
+  <section id="kontext">
+    <div class="section-head"><h2>Kontext</h2><p>Die Kooperation und die institutionelle Einbindung werden hier knapp erklärt.</p></div>
+    <div class="twocol">
+      <div class="panel"><h3>Kooperation</h3><p style="color:var(--muted)">Die Brand Stiftung ist ein wichtiger Partner des Projekts. Prof. Johannes Üpping begleitet die Zusammenarbeit als Forschungspartner.</p><ul><li>Kooperation seit Juli 2026</li><li>Forschungspartner: Prof. Johannes Üpping</li><li>Hagedorn ist der Ort, an dem die Daten erhoben werden.</li></ul></div>
+      <div class="panel"><h3>Inhaltliche Einordnung</h3><p style="color:var(--muted)">Das SmInReSy Projekt verbindet Monitoring, KI, offene Entwicklung und reale Kooperationen.</p><ul><li>Open-Source-Anregungen von <a href="https://maxsitt.github.io/insect-detect-docs/">Max Sittinger</a></li><li>Inspiration durch das <a href="https://kinsecta.org/">KInsecta-Modell</a></li><li>Die <a href="https://insectai.eu/">insectAI</a> und die <a href="https://earthspecies.org/">Earth Species</a> Community ist ein Impulsgeber.</li></ul></div>
+    </div>
+  </section>
 
-            <h2 class="card-main-title">
-              Von der Erkennung zur Kommunikation
-            </h2>
-            <p class="card-main-subtitle" id="projekt-beschreibung">
-              Entwicklung und Erprobung von Methoden zur automatisierten
-              Identifizierung von Insektenarten – als Grundlage für mögliche
-              artspezifische Kommunikationsformen. Das Vorhaben ist seit
-              Oktober 2025 im Rahmen von <strong>TRiNNOVATION</strong> als
-              Innovationsprojekt mit der Bezeichnung <strong>„SmInReSy“</strong>
-              (Smart Insect Rescue System) verortet.
-            </p>
-
-            <p class="card-text">
-              Weitere Informationen zu den Innovationsprojekten der TH OWL
-              finden sich auf der Seite von
-              <a href="https://www.th-owl.de/forschung/transfer/trinnovation-owl/innovationsprojekte/smart-insect-rescue-system-sminresy/"
-               target="_blank" rel="noopener noreferrer"
-               style="color:#38bdf8; text-decoration:underline;">
-                TRiNNOVATION – Innovationsprojekte (TH OWL)
-              </a>.
-            </p>
-
-            <div class="card-grid">
-              <div class="chip">
-                <span class="chip-dot"></span>
-                Bildbasierte Klassifikation
-              </div>
-              <div class="chip">
-                <span class="chip-dot.green"></span>
-                Artspezifische Signale
-              </div>
-              <div class="chip">
-                <span class="chip-dot.yellow"></span>
-                Achtsamer Umgang mit Insekten
-              </div>
-              <div class="chip">
-                <span class="chip-dot.red"></span>
-                Praxisnahe Szenarien
-              </div>
-            </div>
-
-            <p class="card-text">
-              Im Zentrum steht zunächst die Frage,
-              <strong>wie Insekten zuverlässig erkannt und einer Art
-              zugeordnet werden können</strong>. Daran anknüpfend eröffnet das
-              Projekt eine zweite, experimentelle Ebene: die Idee, aus dieser
-              Erkennung heraus <strong>gezielte, artspezifische Signale</strong>
-              abzuleiten, die von Insekten als Aufforderung oder „Bitte“
-              interpretiert werden könnten.
-            </p>
-
-            <p class="card-text">
-              Ein beispielhaftes Szenario ist das Auftauchen einer
-              <strong>Wespe</strong> in einem Wohnraum: Wird die Wespe
-              korrekt erkannt, könnte das System versuchen, über speziell
-              gestaltete Signale – etwa durch bestimmte Kombinationen von
-              Bewegung, Schwingung, Licht oder Geruch – eine
-              <strong>artspezifische „Bitte“</strong> zu formulieren:
-              die Wespe möge den Raum oder das Gebiet wieder verlassen.
-              Langfristig soll so untersucht werden, ob und wie sich
-              Konfliktsituationen mit Insekten <strong>gewaltfrei,
-              respektvoll und artgerecht entschärfen</strong> lassen.
-            </p>
-
-            <div class="pill-row">
-              <span class="pill">Forschung</span>
-              <span class="pill">Insekten</span>
-              <span class="pill">Identifizierung</span>
-              <span class="pill">Kommunikation</span>
-              <span class="pill">Biodiversität</span>
-              <span class="pill">Verhaltenssignale</span>
-              <span class="pill">Experimentell</span>
-            </div>
-          </div>
-        </div>
-      </aside>
-    </main>
-
-    <footer>
-      <div class="footer-left">
-        &copy; <span id="jahr"></span> Forschungsprojekt Insekten‑Identifizierung
-      </div>
-      <div class="footer-right">
-        <a href="https://www.th-owl.de/impressum/" class="footer-link">Impressum</a>
-        <a href="https://www.th-owl.de/datenschutz/" class="footer-link">Datenschutz</a>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    // Jahr automatisch einsetzen
-    document.getElementById('jahr').textContent = new Date().getFullYear();
-  </script>
+  <section id="kontakt">
+    <div class="section-head"><h2>Kontakt</h2><p>Hier können Sie Kontakt aufnehmen.</p></div>
+    <div class="panel"><p style="color:var(--muted);margin:0"><a href="mailto:sebastian.becker@th-owl.de?subject=Forschungsprojekt%20Insekten-Identifizierung">E-Mail</a>, <a href="https://www.th-owl.de/datenschutz/">Datenschutz</a> und <a href="https://www.th-owl.de/impressum/">Impressum</a>.</p></div>
+  </section>
+</main>
+<footer><div class="wrap">Insektenmonitoring.de</div></footer>
 </body>
 </html>
