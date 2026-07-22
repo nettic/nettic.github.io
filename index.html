@@ -7,25 +7,25 @@
   <style>
     :root{--bg:#f7f6f2;--surface:#ffffff;--surface2:#eef3ef;--text:#1f231f;--muted:#5f6660;--line:#d9dfd8;--accent:#2d6b57;--accent2:#7a9b84;--shadow:0 10px 30px rgba(31,35,31,.08);--radius:18px;--max:1120px}
     *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-    a {
-  color: var(--accent);           /* oder eine eigene Linkfarbe */
-  text-decoration: underline;
-  text-decoration-thickness: 0.08em;
-  text-underline-offset: 0.15em;
-}
-a:hover {
-  color: var(--accent2);          /* etwas hellere/kräftigere Hover-Farbe */} 
-  .wrap{width:min(calc(100% - 2rem),var(--max));margin:auto}
+    a{color:var(--accent);text-decoration:underline;text-decoration-thickness:0.08em;text-underline-offset:0.15em}
+    a:hover{color:var(--accent2)}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin:auto}
     header{position:sticky;top:0;background:rgba(247,246,242,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
-    .top{display:flex;justify-content:space-between;align-items:center;padding:16px 0;gap:16px} nav{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:.95rem}
+    .top{display:flex;justify-content:space-between;align-items:center;padding:16px 0;gap:16px}
+    .top-left{display:flex;align-items:center;gap:16px}
+    nav{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:.95rem}
+    .lang-btn{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:.85rem;font-weight:700;color:var(--text);text-decoration:none;cursor:pointer;transition:background .15s,border-color .15s;white-space:nowrap}
+    .lang-btn:hover{background:var(--surface2);border-color:var(--accent2);color:var(--text)}
+    .flag{display:inline-block;width:22px;height:15px;border-radius:3px;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 1px rgba(0,0,0,.1)}
+    .flag svg{width:100%;height:100%;display:block}
     .hero{padding:72px 0 40px;display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:end}
     h1,h2,h3{margin:0;line-height:1.08} h1{font-size:clamp(2.1rem,4vw,3.8rem);max-width:12ch} h2{font-size:clamp(1.5rem,2.2vw,2.2rem)} h3{font-size:1.1rem}
     .lead{color:var(--muted);max-width:62ch;margin:18px 0 0} .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
     .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:999px;font-weight:700;border:1px solid var(--line);background:var(--surface)}
     .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
     .card,.panel,.news{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .hero-card{padding:28px}.stat{display:grid;grid-template-columns:52px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--line)} .stat:first-of-type{border-top:0;padding-top:0}
-    .num{font-size:1.6rem;color:var(--accent);font-weight:700}
+    .hero-card{padding:28px}
+    .hero-card img{width:100%;border-radius:10px;display:block}
     section{padding:42px 0} .section-head{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;margin-bottom:24px} .section-head p{margin:0;color:var(--muted)}
     .grid3,.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
     .card{padding:22px} .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--surface2);color:#4c6552;font-size:.78rem;font-weight:700;margin-bottom:14px}
@@ -37,30 +37,35 @@ a:hover {
   </style>
 </head>
 <body>
-<header><div class="wrap top"><strong>Insektenmonitoring.de - SmInReSy</strong><a class="lang-btn" href="index_en.html" title="English version">
-  <span class="flag">
-    <svg viewBox="0 0 22 15" xmlns="http://www.w3.org/2000/svg">
-      <rect width="22" height="15" fill="#012169"/>
-      <path d="M0,0 L22,15 M22,0 L0,15" stroke="#fff" stroke-width="3"/>
-      <path d="M0,0 L22,15 M22,0 L0,15" stroke="#C8102E" stroke-width="1.8"/>
-      <path d="M11,0 V15 M0,7.5 H22" stroke="#fff" stroke-width="5"/>
-      <path d="M11,0 V15 M0,7.5 H22" stroke="#C8102E" stroke-width="3"/>
-    </svg>
-  </span>
-  EN
-</a><nav><a href="#projekt">Projekt</a><a href="#methodik">Methodik</a><a href="#news">News</a><a href="#kontext">Kontext</a><a href="#kontakt">Kontakt</a></nav></div></header>
+<header><div class="wrap top">
+  <div class="top-left">
+    <strong>Insektenmonitoring.de - SmInReSy</strong>
+    <a class="lang-btn" href="index_en.html" title="English version">
+      <span class="flag">
+        <svg viewBox="0 0 22 15" xmlns="http://www.w3.org/2000/svg">
+          <rect width="22" height="15" fill="#012169"/>
+          <path d="M0,0 L22,15 M22,0 L0,15" stroke="#fff" stroke-width="3"/>
+          <path d="M0,0 L22,15 M22,0 L0,15" stroke="#C8102E" stroke-width="1.8"/>
+          <path d="M11,0 V15 M0,7.5 H22" stroke="#fff" stroke-width="5"/>
+          <path d="M11,0 V15 M0,7.5 H22" stroke="#C8102E" stroke-width="3"/>
+        </svg>
+      </span>
+      EN
+    </a>
+  </div>
+  <nav><a href="#projekt">Projekt</a><a href="#methodik">Methodik</a><a href="#news">News</a><a href="#kontext">Kontext</a><a href="#kontakt">Kontakt</a></nav>
+</div></header>
+
 <main class="wrap">
   <section class="hero" id="top">
     <div>
       <div class="tag">Forschungsprojekt · Monitoring · KI · Open Source</div>
       <h1>Automatisiertes Insektenmonitoring.</h1>
-      <p class="lead">Dieses Projekt beschäftigt sich mit der automatisierten Identifizierung von Insekten – und geht bewusst einen Schritt weiter: Durch die eindeutige Bestimmung soll eine Grundlage geschaffen werden, um artspezifische Kommunikationsformen zu erforschen und zu erproben. Ziel ist es, Insekten nicht nur zu erkennen, sondern in Zukunft auch gezielt durch ein Leitsystem anzusprechen, auf sie einzugehen und bestimmte „Bitten“ oder Forderungen zu vermitteln.</p>
+      <p class="lead">Dieses Projekt beschäftigt sich mit der automatisierten Identifizierung von Insekten – und geht bewusst einen Schritt weiter: Durch die eindeutige Bestimmung soll eine Grundlage geschaffen werden, um artspezifische Kommunikationsformen zu erforschen und zu erproben. Ziel ist es, Insekten nicht nur zu erkennen, sondern in Zukunft auch gezielt durch ein Leitsystem anzusprechen, auf sie einzugehen und bestimmte „Bitten" oder Forderungen zu vermitteln.</p>
       <div class="btns"><a class="btn primary" href="#projekt">Zum Projekt</a><a class="btn" href="#news">Zu den News</a></div>
     </div>
     <aside class="card hero-card">
-      
-          <img src="https://www.th-owl.de/files/_processed_/5/d/csm_bonkers_image_a_machine_illuminating_569624dab7.png" alt="Visualisierung eines maschinellen Systems zur Insekten-Identifizierung">
-        
+      <img src="https://www.th-owl.de/files/_processed_/5/d/csm_bonkers_image_a_machine_illuminating_569624dab7.png" alt="Visualisierung eines maschinellen Systems zur Insekten-Identifizierung">
     </aside>
   </section>
 
@@ -83,7 +88,7 @@ a:hover {
   </section>
 
   <section id="news">
-    <div class="section-head"><h2>News</h2><p>Die News-Sektion bietet Übersicht zu aktuellen Entwicklungen im Projekt .</p></div>
+    <div class="section-head"><h2>News</h2><p>Die News-Sektion bietet Übersicht zu aktuellen Entwicklungen im Projekt.</p></div>
     <div class="news-grid">
       <article class="news"><div class="meta"><span>07.2026</span><span>Kooperation</span></div><h3>Kooperation mit der Brandstiftung</h3><p style="color:var(--muted)">Seit Juli 2026 besteht die Kooperation mit der <a href="https://brandstiftung.eu/">Brandstiftung</a>. Die Stiftung wurde im Herbst 2025 gegründet – mit dem Ziel, neue Impulse für Artenschutz, Umweltschutz und nachhaltige Entwicklung zu setzen. <a href="https://www.ife-owl.de/ueber-uns/team/upping-johannes">Prof. Johannes Üpping</a> (TH OWL) ist neben Gründungsmitglied der Stiftung nun auch als Forschungspartner von SmInReSy aktiv.</p></article>
       <article class="news"><div class="meta"><span>07.2026</span><span>Tagung</span></div><h3>Einladung zur ACI-Tagung</h3><p style="color:var(--muted)">Für Dezember wurde ich eingeladen, mein SIL-Konzept auf der <a href="https://www.aciconf.org/aci2026">ACI-Tagung</a> (Animal-Computer Interaction) per Poster vorzustellen.</p></article>
@@ -104,6 +109,7 @@ a:hover {
     <div class="panel"><p style="color:var(--muted);margin:0"><a href="mailto:sebastian.becker@th-owl.de?subject=Forschungsprojekt%20Insekten-Identifizierung">E-Mail</a>, <a href="https://www.th-owl.de/datenschutz/">Datenschutz</a> und <a href="https://www.th-owl.de/impressum/">Impressum</a>.</p></div>
   </section>
 </main>
+
 <footer><div class="wrap">Insektenmonitoring.de</div></footer>
 </body>
 </html>
