@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardware-Setup – Insektenmonitoring</title>
+<meta name="description" content="Interaktive 3D-Übersicht der Hardware-Komponenten des Insektenmonitoring-Systems.">
+
+<!-- model-viewer: Web Component für 3D-Modelle (glTF/GLB), keine eigene Build-Pipeline nötig -->
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="page-header">
+  <div class="wrap">
+    <p class="eyebrow">Insektenmonitoring · Hardware</p>
+    <h1>Setup-Showcase</h1>
+    <p class="lead">
+      Übersicht der eingesetzten Hardware-Komponenten mit interaktiven 3D-Modellen.
+      Zentrales Element ist der NVIDIA Jetson AGX Thor („lilocathor“), der die
+      Objekterkennung direkt vor Ort ausführt.
+    </p>
+  </div>
+</header>
+
+<!-- Die Karten selbst werden nicht statisch im HTML gepflegt, sondern von app.js
+     aus data.json generiert - neue Bauteile erfordern daher keine HTML-Änderung. -->
+<main class="wrap">
+  <div id="card-grid" class="card-grid" aria-live="polite">
+    <p class="loading-hint">Lade Komponenten…</p>
+  </div>
+</main>
+
+<footer class="page-footer">
+  <div class="wrap">
+    <p>Reines HTML/CSS/JS – kein Framework, kein Build-Schritt.</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

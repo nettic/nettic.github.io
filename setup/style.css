@@ -1,0 +1,108 @@
+/* Setup-Showcase: responsives Karten-Grid, kein Framework */
+
+:root {
+  --bg: #0f1512;
+  --bg-card: #17201b;
+  --border: #2a352e;
+  --text: #e7ede8;
+  --text-muted: #9fada3;
+  --accent-compute: #5fb4ff;
+  --accent-sensor: #7fd88a;
+  --accent-actuator: #ffb361;
+  --radius: 0.75rem;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.page-header {
+  padding-block: 2.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  color: var(--accent-compute);
+  margin: 0 0 0.5rem;
+}
+h1 { margin: 0 0 0.75rem; font-size: clamp(1.6rem, 3vw, 2.3rem); }
+.lead { color: var(--text-muted); max-width: 46rem; margin: 0; }
+
+main.wrap { padding-block: 2rem 3rem; }
+
+.loading-hint { color: var(--text-muted); }
+
+/* Grid: passt Spaltenzahl automatisch an die verfügbare Breite an */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card model-viewer {
+  width: 100%;
+  height: 16rem;
+  background: radial-gradient(circle at 50% 40%, #1d2a22, #0f1512 75%);
+  --poster-color: transparent;
+}
+
+.card-body { padding: 1.1rem 1.25rem 1.4rem; display: flex; flex-direction: column; gap: 0.6rem; }
+
+.card-category {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+}
+.card[data-category="compute"] .card-category { color: var(--accent-compute); }
+.card[data-category="sensor"] .card-category { color: var(--accent-sensor); }
+.card[data-category="actuator"] .card-category { color: var(--accent-actuator); }
+
+.card h2 { margin: 0; font-size: 1.15rem; }
+.card-description { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
+
+.specs-list {
+  margin: 0.3rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.88rem;
+}
+.specs-list li { display: flex; justify-content: space-between; gap: 0.75rem; }
+.specs-list dt, .specs-key { color: var(--text-muted); }
+.specs-value { text-align: right; font-weight: 600; }
+
+.page-footer {
+  border-top: 1px solid var(--border);
+  padding-block: 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}

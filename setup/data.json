@@ -1,0 +1,15 @@
+[
+  {
+    "name": "NVIDIA Jetson AGX Thor \"lilocathor\"",
+    "modelPath": "models/jetson-thor.glb",
+    "description": "Zentrale Recheneinheit des Insektenmonitoring-Systems. Führt Objekterkennung und Klassifikation direkt am Einsatzort aus (Edge-Inferenz), ohne dass Rohbilder in die Cloud übertragen werden müssen.",
+    "specs": {
+      "AI-Leistung": "bis zu 2070 TFLOPS (FP4)",
+      "GPU": "NVIDIA Blackwell-Architektur",
+      "CPU": "14-Core Arm Neoverse-V3AE",
+      "Arbeitsspeicher": "128 GB LPDDR5X",
+      "Leistungsaufnahme": "40–130 W konfigurierbar"
+    },
+    "category": "compute"
+  }
+]
