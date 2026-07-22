@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insektenmonitoring.de - SmInReSy</title>
+  <style>
+    :root{--bg:#f7f6f2;--surface:#ffffff;--surface2:#eef3ef;--text:#1f231f;--muted:#5f6660;--line:#d9dfd8;--accent:#2d6b57;--accent2:#7a9b84;--shadow:0 10px 30px rgba(31,35,31,.08);--radius:18px;--max:1120px}
+    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:underline;text-decoration-thickness:0.08em;text-underline-offset:0.15em}
+    a:hover{color:var(--accent2)}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin:auto}
+    header{position:sticky;top:0;background:rgba(247,246,242,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
+    .top{display:flex;justify-content:space-between;align-items:center;padding:16px 0;gap:16px}
+    .top-left{display:flex;align-items:center;gap:16px}
+    nav{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:.95rem}
+
+    /* Language flag button */
+    .lang-btn{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:.85rem;font-weight:700;color:var(--text);text-decoration:none;cursor:pointer;transition:background .15s,border-color .15s;white-space:nowrap}
+    .lang-btn:hover{background:var(--surface2);border-color:var(--accent2);color:var(--text)}
+    .flag{display:inline-block;width:22px;height:15px;border-radius:3px;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 1px rgba(0,0,0,.1)}
+    .flag svg{width:100%;height:100%;display:block}
+
+    .hero{padding:72px 0 40px;display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:end}
+    h1,h2,h3{margin:0;line-height:1.08} h1{font-size:clamp(2.1rem,4vw,3.8rem);max-width:12ch} h2{font-size:clamp(1.5rem,2.2vw,2.2rem)} h3{font-size:1.1rem}
+    .lead{color:var(--muted);max-width:62ch;margin:18px 0 0} .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:999px;font-weight:700;border:1px solid var(--line);background:var(--surface)}
+    .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .card,.panel,.news{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero-card{padding:28px}
+    .hero-card img{width:100%;border-radius:10px;display:block}
+    section{padding:42px 0} .section-head{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;margin-bottom:24px} .section-head p{margin:0;color:var(--muted)}
+    .grid3,.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{padding:22px} .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--surface2);color:#4c6552;font-size:.78rem;font-weight:700;margin-bottom:14px}
+    .timeline{padding:22px} .row{display:grid;grid-template-columns:140px 1fr;gap:18px;padding:16px 0;border-top:1px solid var(--line)} .row:first-child{border-top:0;padding-top:0} time{color:var(--muted);font-weight:700}
+    .news-grid .news{padding:22px;display:flex;flex-direction:column;gap:12px} .meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+    .twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px} .panel{padding:24px} ul{margin:14px 0 0;padding:0} li{list-style:none;margin:10px 0;padding-left:18px;position:relative;color:var(--muted)} li:before{content:'•';position:absolute;left:0;color:var(--accent)}
+    footer{padding:28px 0 50px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+    @media (max-width:900px){.hero,.section-head,.grid3,.news-grid,.twocol,.row{grid-template-columns:1fr} nav{display:none}}
+  </style>
+</head>
+<body>
+<header><div class="wrap top">
+  <div class="top-left">
+    <strong>Insektenmonitoring.de - SmInReSy</strong>
+    <a class="lang-btn" href="index.html" title="Zur deutschen Version">
+      <span class="flag">
+        <svg viewBox="0 0 22 15" xmlns="http://www.w3.org/2000/svg">
+          <rect width="22" height="5" y="0" fill="#000"/>
+          <rect width="22" height="5" y="5" fill="#D00"/>
+          <rect width="22" height="5" y="10" fill="#FFCE00"/>
+        </svg>
+      </span>
+      DE
+    </a>
+  </div>
+  <nav>
+    <a href="#project">Project</a>
+    <a href="#methodology">Methodology</a>
+    <a href="#news">News</a>
+    <a href="#context">Context</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <section class="hero" id="top">
+    <div>
+      <div class="tag">Research Project · Monitoring · AI · Open Source</div>
+      <h1>Automated Insect Monitoring.</h1>
+      <p class="lead">This project focuses on the automated identification of insects — and deliberately goes one step further: through unambiguous species determination, a foundation is to be created for researching and testing species-specific forms of communication. The goal is not only to recognize insects, but in the future to address them in a targeted way through a guidance system, respond to their presence, and convey specific "requests" or signals.</p>
+      <div class="btns"><a class="btn primary" href="#project">To the Project</a><a class="btn" href="#news">To the News</a></div>
+    </div>
+    <aside class="card hero-card">
+      <img src="https://www.th-owl.de/files/_processed_/5/d/csm_bonkers_image_a_machine_illuminating_569624dab7.png" alt="Visualisation of a machine-based insect identification system">
+    </aside>
+  </section>
+
+  <section id="project">
+    <div class="section-head"><h2>Project</h2><p>The innovation project <a href="https://www.th-owl.de/forschung/transfer/trinnovation-owl/innovationsprojekte/smart-insect-rescue-system">SmInReSy</a> combines insect monitoring, automated identification, and technical interaction. Further information on TH OWL's innovation projects can be found on the <a href="https://www.th-owl.de/forschung/transfer/trinnovation-owl/innovationsprojekte/">TRiNNOVATION – Innovation Projects (TH OWL)</a> page.</p></div>
+    <div class="grid3">
+      <article class="card"><div class="tag">Objective</div><h3>Robust Observation</h3><p style="color:var(--muted)">Reliable recording and analysis rather than mere technology demonstration.</p></article>
+      <article class="card"><div class="tag">Technology</div><h3>Open Approaches</h3><p style="color:var(--muted)">The setup is partly inspired by Max Sittinger's open-source approach and the KInsecta model.</p></article>
+      <article class="card"><div class="tag">Impact</div><h3>Interaction</h3><p style="color:var(--muted)">Communication between animals and computers is to be researched.</p></article>
+    </div>
+  </section>
+
+  <section id="methodology">
+    <div class="section-head"><h2>Methodology and Setup</h2><p>The workflow is deliberately structured in modular building blocks, making it transparent how field work, data collection, and analysis come together into a robust monitoring pipeline.</p></div>
+    <div class="panel timeline">
+      <div class="row"><time>Block 1</time><div><strong>Define field and sensor systems.</strong><div style="color:var(--muted)">Measurement logic, data sources, and relevant insect groups are described in a traceable way.</div></div></div>
+      <div class="row"><time>Block 2</time><div><strong>Record and structure data.</strong><div style="color:var(--muted)">Image, sensor, or observational data are integrated into a consistent workflow.</div></div></div>
+      <div class="row"><time>Block 3</time><div><strong>Evaluate models and explore interaction possibilities.</strong><div style="color:var(--muted)">Technical analysis remains grounded in biological questions.</div></div></div>
+    </div>
+  </section>
+
+  <section id="news">
+    <div class="section-head"><h2>News</h2><p>The news section provides an overview of current developments in the project.</p></div>
+    <div class="news-grid">
+      <article class="news"><div class="meta"><span>07/2026</span><span>Cooperation</span></div><h3>Partnership with the Brandstiftung</h3><p style="color:var(--muted)">Since July 2026, a cooperation exists with <a href="https://brandstiftung.eu/">Brandstiftung</a>. The foundation was established in autumn 2025 with the goal of providing new impetus for species conservation, environmental protection, and sustainable development. <a href="https://www.ife-owl.de/ueber-uns/team/upping-johannes">Prof. Johannes Üpping</a> (TH OWL) is both a founding member of the foundation and now an active research partner of SmInReSy.</p></article>
+      <article class="news"><div class="meta"><span>07/2026</span><span>Conference</span></div><h3>Invitation to the ACI Conference</h3><p style="color:var(--muted)">I have been invited to present my SIL concept as a poster at the <a href="https://www.aciconf.org/aci2026">ACI Conference</a> (Animal-Computer Interaction) in December.</p></article>
+      <article class="news"><div class="meta"><span>04/2026</span><span>Conference</span></div><h3>Visit to Leuven (Belgium)</h3><p style="color:var(--muted)">I was represented at the 1st International Day of Insects to exchange ideas with specialists and to meet again with the team around Dr. Reckhaus, who also run the "insect-respect" initiative.</p></article>
+    </div>
+  </section>
+
+  <section id="context">
+    <div class="section-head"><h2>Context</h2><p>The cooperation and institutional embedding are briefly explained here.</p></div>
+    <div class="twocol">
+      <div class="panel"><h3>Cooperation</h3><p style="color:var(--muted)">The Brandstiftung is an important project partner. Prof. Johannes Üpping accompanies the collaboration as a research partner.</p><ul><li>Cooperation since July 2026</li><li>Research partner: Prof. Johannes Üpping</li><li>Data is collected in the region around Hagedorn.</li></ul></div>
+      <div class="panel"><h3>Thematic Classification</h3><p style="color:var(--muted)">The SmInReSy project combines monitoring, AI, open development, and real-world collaborations.</p><ul><li>Open-source inspiration from <a href="https://maxsitt.github.io/insect-detect-docs/">Max Sittinger</a></li><li>Inspired by the <a href="https://kinsecta.org/">KInsecta model</a></li><li>The <a href="https://insectai.eu/">insectAI</a> and <a href="https://earthspecies.org/">Earth Species</a> communities are key sources of inspiration, as is <a href="https://www.insect-respect.org/">Insect-respect</a>.</li></ul></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-head"><h2>Contact</h2><p>Get in touch here.</p></div>
+    <div class="panel"><p style="color:var(--muted);margin:0"><a href="mailto:sebastian.becker@th-owl.de?subject=Research%20Project%20Insect%20Identification">Email</a>, <a href="https://www.th-owl.de/datenschutz/">Privacy Policy</a> and <a href="https://www.th-owl.de/impressum/">Imprint</a>.</p></div>
+  </section>
+</main>
+
+<footer><div class="wrap">Insektenmonitoring.de</div></footer>
+</body>
+</html>
