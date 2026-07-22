@@ -1,6 +1,6 @@
 [
   {
-    "name": "NVIDIA Jetson AGX Thor \"lilocathor\"",
+    "name": "NVIDIA Jetson AGX Thor",
     "modelPath": "models/jetson-thor.glb",
     "description": "Zentrale Recheneinheit des Insektenmonitoring-Systems. Führt Objekterkennung und Klassifikation direkt am Einsatzort aus (Edge-Inferenz), ohne dass Rohbilder in die Cloud übertragen werden müssen.",
     "specs": {
