@@ -31,6 +31,21 @@
     .card{padding:22px} .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--surface2);color:#4c6552;font-size:.78rem;font-weight:700;margin-bottom:14px}
     .timeline{padding:22px} .row{display:grid;grid-template-columns:140px 1fr;gap:18px;padding:16px 0;border-top:1px solid var(--line)} .row:first-child{border-top:0;padding-top:0} time{color:var(--muted);font-weight:700}
     .news-grid .news{padding:22px;display:flex;flex-direction:column;gap:12px} .meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+    .news-list{padding:6px 0}
+    .news-item{border-top:1px solid var(--line)}
+    .news-item:first-child{border-top:0}
+    .news-item summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;cursor:pointer;list-style:none}
+    .news-item summary::-webkit-details-marker{display:none}
+    .news-summary-main{display:flex;align-items:center;gap:14px;flex-wrap:wrap;min-width:0}
+    .news-summary-main time{color:var(--muted);font-weight:700;font-size:.85rem;flex-shrink:0;width:64px}
+    .news-summary-main .tag{margin:0;flex-shrink:0}
+    .news-title{font-weight:700}
+    .news-item summary:hover .news-title{color:var(--accent)}
+    .chevron{width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s;flex-shrink:0}
+    .news-item[open] .chevron{transform:rotate(-135deg)}
+    .news-body{padding:0 22px 22px 22px;color:var(--muted)}
+    .news-body p{margin:0}
+    @media (max-width:900px){.news-summary-main{gap:10px}.news-summary-main time{width:auto}}
     .twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px} .panel{padding:24px} ul{margin:14px 0 0;padding:0} li{list-style:none;margin:10px 0;padding-left:18px;position:relative;color:var(--muted)} li:before{content:'•';position:absolute;left:0;color:var(--accent)}
     footer{padding:28px 0 50px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
     @media (max-width:900px){.hero,.section-head,.grid3,.news-grid,.twocol,.row{grid-template-columns:1fr} nav{display:none}}
@@ -89,10 +104,48 @@
 
   <section id="news">
     <div class="section-head"><h2>News</h2><p>Die News-Sektion bietet Übersicht zu aktuellen Entwicklungen im Projekt.</p></div>
-    <div class="news-grid">
-      <article class="news"><div class="meta"><span>07.2026</span><span>Kooperation</span></div><h3>Kooperation mit der Brandstiftung</h3><p style="color:var(--muted)">Seit Juli 2026 besteht die Kooperation mit der <a href="https://brandstiftung.eu/">Brandstiftung</a>. Die Stiftung wurde im Herbst 2025 gegründet – mit dem Ziel, neue Impulse für Artenschutz, Umweltschutz und nachhaltige Entwicklung zu setzen. <a href="https://www.ife-owl.de/ueber-uns/team/upping-johannes">Prof. Johannes Üpping</a> (TH OWL) ist neben Gründungsmitglied der Stiftung nun auch als Forschungspartner von SmInReSy aktiv.</p></article>
-      <article class="news"><div class="meta"><span>07.2026</span><span>Tagung</span></div><h3>Einladung zur ACI-Tagung</h3><p style="color:var(--muted)">Für Dezember wurde ich eingeladen, mein SIL-Konzept auf der <a href="https://www.aciconf.org/aci2026">ACI-Tagung</a> (Animal-Computer Interaction) per Poster vorzustellen.</p></article>
-      <article class="news"><div class="meta"><span>04.2026</span><span>Tagung</span></div><h3>Besuch in Leuven (Belgien)</h3><p style="color:var(--muted)">Ich war vertreten auf dem 1. international day of insects um mich mit den Fachbesuchern auszutauschen und das Team um Dr. Reckhaus wieder zu treffen, die auch die Abteilung "insect-respect" betreiben.</p></article>
+    <div class="panel news-list">
+      <details class="news-item" open>
+        <summary>
+          <span class="news-summary-main"><time>09.2026</time><span class="tag">Tagung</span><span class="news-title">Vortrag auf der NTA 2026 in Regensburg</span></span>
+          <span class="chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="news-body">
+          <img src="img/nta2026-regensburg-vortrag-sebastian-becker.jpg" alt="Sebastian Becker hält seinen Vortrag zu SmInReSy auf der NTA 2026 in Regensburg" style="width:100%;border-radius:10px;margin-bottom:14px;display:block">
+          <p>Vom 21. bis 23. September 2026 habe ich auf der 12. Internationalen Konferenz des Netzwerks Technikfolgenabschätzung (NTA) an der OTH Regensburg den Eröffnungsvortrag der Session „Sensorik als Governance-Infrastruktur: Folgen KI-gestützten Umweltmonitorings" gehalten: „Wingbeat-Sensorik als Governance-Infrastruktur: Wie KI-basiertes Insektenmonitoring Evidenz, Zuständigkeiten und Handlungsdruck erzeugt". Vorgestellt wurde das Projekt SmInReSy vor interdisziplinärem Fachpublikum aus Technik-, Sozial- und Geisteswissenschaften. „Besonders wertvoll war für mich neben dem interdisziplinären Austausch mit anderen Forschenden der Einblick in die Perspektiven der Technikfolgenabschätzung. Eine rundum gelungene Konferenz."</p>
+        </div>
+      </details>
+      <details class="news-item">
+        <summary>
+          <span class="news-summary-main"><time>09.2026</time><span class="tag">Veranstaltung</span><span class="news-title">TH-OWL-Stand beim Glasstadtfest in Bad Driburg</span></span>
+          <span class="chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="news-body">
+          <img src="img/glasstadtfest-driburg-2026-th-owl-stand.jpg" alt="Team am Stand der TH OWL beim Glasstadtfest Bad Driburg, vorn Sebastian Becker" style="width:100%;border-radius:10px;margin-bottom:14px;display:block">
+          <p>Beim Glasstadtfest in Bad Driburg war die TH OWL mit einem eigenen Stand unter dem Motto „Tag der Wissenschaft" vertreten. Ich habe dort über den Rückgang der Insekten und die damit verbundenen Probleme informiert. Mit dabei: Prof. Dr. Rainer Rasche sowie Studierende, die u. a. einen Leader-/Follower-Roboterarm zeigten. <a href="https://bad-driburg-aktuell.info/2026/09/22/forschen-staunen-feiern/">Bericht von Bad Driburg aktuell</a> (Foto: Bad Driburg aktuell).</p>
+        </div>
+      </details>
+      <details class="news-item">
+        <summary>
+          <span class="news-summary-main"><time>07.2026</time><span class="tag">Kooperation</span><span class="news-title">Kooperation mit der Brandstiftung</span></span>
+          <span class="chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="news-body"><p>Seit Juli 2026 besteht die Kooperation mit der <a href="https://brandstiftung.eu/">Brandstiftung</a>. Die Stiftung wurde im Herbst 2025 gegründet – mit dem Ziel, neue Impulse für Artenschutz, Umweltschutz und nachhaltige Entwicklung zu setzen. <a href="https://www.ife-owl.de/ueber-uns/team/upping-johannes">Prof. Johannes Üpping</a> (TH OWL) ist neben Gründungsmitglied der Stiftung nun auch als Forschungspartner von SmInReSy aktiv.</p></div>
+      </details>
+      <details class="news-item">
+        <summary>
+          <span class="news-summary-main"><time>07.2026</time><span class="tag">Tagung</span><span class="news-title">Einladung zur ACI-Tagung</span></span>
+          <span class="chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="news-body"><p>Für Dezember wurde ich eingeladen, mein SIL-Konzept auf der <a href="https://www.aciconf.org/aci2026">ACI-Tagung</a> (Animal-Computer Interaction) per Poster vorzustellen.</p></div>
+      </details>
+      <details class="news-item">
+        <summary>
+          <span class="news-summary-main"><time>04.2026</time><span class="tag">Tagung</span><span class="news-title">Besuch in Leuven (Belgien)</span></span>
+          <span class="chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="news-body"><p>Ich war vertreten auf dem 1. international day of insects um mich mit den Fachbesuchern auszutauschen und das Team um Dr. Reckhaus wieder zu treffen, die auch die Abteilung "insect-respect" betreiben.</p></div>
+      </details>
     </div>
   </section>
 

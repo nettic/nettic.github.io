@@ -34,6 +34,21 @@
     .card{padding:22px} .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--surface2);color:#4c6552;font-size:.78rem;font-weight:700;margin-bottom:14px}
     .timeline{padding:22px} .row{display:grid;grid-template-columns:140px 1fr;gap:18px;padding:16px 0;border-top:1px solid var(--line)} .row:first-child{border-top:0;padding-top:0} time{color:var(--muted);font-weight:700}
     .news-grid .news{padding:22px;display:flex;flex-direction:column;gap:12px} .meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+    .news-list{padding:6px 0}
+    .news-item{border-top:1px solid var(--line)}
+    .news-item:first-child{border-top:0}
+    .news-item summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;cursor:pointer;list-style:none}
+    .news-item summary::-webkit-details-marker{display:none}
+    .news-summary-main{display:flex;align-items:center;gap:14px;flex-wrap:wrap;min-width:0}
+    .news-summary-main time{color:var(--muted);font-weight:700;font-size:.85rem;flex-shrink:0;width:64px}
+    .news-summary-main .tag{margin:0;flex-shrink:0}
+    .news-title{font-weight:700}
+    .news-item summary:hover .news-title{color:var(--accent)}
+    .chevron{width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s;flex-shrink:0}
+    .news-item[open] .chevron{transform:rotate(-135deg)}
+    .news-body{padding:0 22px 22px 22px;color:var(--muted)}
+    .news-body p{margin:0}
+    @media (max-width:900px){.news-summary-main{gap:10px}.news-summary-main time{width:auto}}
     .twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px} .panel{padding:24px} ul{margin:14px 0 0;padding:0} li{list-style:none;margin:10px 0;padding-left:18px;position:relative;color:var(--muted)} li:before{content:'•';position:absolute;left:0;color:var(--accent)}
     footer{padding:28px 0 50px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
     @media (max-width:900px){.hero,.section-head,.grid3,.news-grid,.twocol,.row{grid-template-columns:1fr} nav{display:none}}
@@ -96,10 +111,48 @@
 
   <section id="news">
     <div class="section-head"><h2>News</h2><p>The news section provides an overview of current developments in the project.</p></div>
-    <div class="news-grid">
-      <article class="news"><div class="meta"><span>07/2026</span><span>Cooperation</span></div><h3>Partnership with the Brandstiftung</h3><p style="color:var(--muted)">Since July 2026, a cooperation exists with <a href="https://brandstiftung.eu/">Brandstiftung</a>. The foundation was established in autumn 2025 with the goal of providing new impetus for species conservation, environmental protection, and sustainable development. <a href="https://www.ife-owl.de/ueber-uns/team/upping-johannes">Prof. Johannes Üpping</a> (TH OWL) is both a founding member of the foundation and now an active research partner of SmInReSy.</p></article>
-      <article class="news"><div class="meta"><span>07/2026</span><span>Conference</span></div><h3>Invitation to the ACI Conference</h3><p style="color:var(--muted)">I have been invited to present my SIL concept as a poster at the <a href="https://www.aciconf.org/aci2026">ACI Conference</a> (Animal-Computer Interaction) in December.</p></article>
-      <article class="news"><div class="meta"><span>04/2026</span><span>Conference</span></div><h3>Visit to Leuven (Belgium)</h3><p style="color:var(--muted)">I was represented at the 1st International Day of Insects to exchange ideas with specialists and to meet again with the team around Dr. Reckhaus, who also run the "insect-respect" initiative.</p></article>
+    <div class="panel news-list">
+      <details class="news-item" open>
+        <summary>
+          <span class="news-summary-main"><time>09/2026</time><span class="tag">Conference</span><span class="news-title">Talk at NTA 2026 in Regensburg</span></span>
+          <span class="chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="news-body">
+          <img src="img/nta2026-regensburg-vortrag-sebastian-becker.jpg" alt="Sebastian Becker giving his talk on SmInReSy at NTA 2026 in Regensburg" style="width:100%;border-radius:10px;margin-bottom:14px;display:block">
+          <p>From 21 to 23 September 2026, I gave the opening talk of the session "Sensing as Governance Infrastructure: Consequences of AI-Based Environmental Monitoring" at the 12th International Conference of the Technology Assessment Network (NTA) at OTH Regensburg: "Wingbeat Sensing as Governance Infrastructure: How AI-Based Insect Monitoring Creates Evidence, Responsibilities, and Pressure to Act". The project SmInReSy was presented to an interdisciplinary audience from engineering, social sciences, and the humanities. "Besides the interdisciplinary exchange with other researchers, the insight into the perspectives of technology assessment was especially valuable to me. An all-round successful conference."</p>
+        </div>
+      </details>
+      <details class="news-item">
+        <summary>
+          <span class="news-summary-main"><time>09/2026</time><span class="tag">Event</span><span class="news-title">TH OWL stand at the Glasstadtfest in Bad Driburg</span></span>
+          <span class="chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="news-body">
+          <img src="img/glasstadtfest-driburg-2026-th-owl-stand.jpg" alt="Team at the TH OWL stand at Glasstadtfest Bad Driburg, Sebastian Becker in front" style="width:100%;border-radius:10px;margin-bottom:14px;display:block">
+          <p>TH OWL was represented with its own stand at the Glasstadtfest in Bad Driburg under the motto "Day of Science". I gave information there on the decline of insects and the problems associated with it. Also present: Prof. Dr. Rainer Rasche and students who, among other things, demonstrated a leader/follower robotic arm. <a href="https://bad-driburg-aktuell.info/2026/09/22/forschen-staunen-feiern/">Report by Bad Driburg aktuell</a> (photo: Bad Driburg aktuell).</p>
+        </div>
+      </details>
+      <details class="news-item">
+        <summary>
+          <span class="news-summary-main"><time>07/2026</time><span class="tag">Cooperation</span><span class="news-title">Partnership with the Brandstiftung</span></span>
+          <span class="chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="news-body"><p>Since July 2026, a cooperation exists with <a href="https://brandstiftung.eu/">Brandstiftung</a>. The foundation was established in autumn 2025 with the goal of providing new impetus for species conservation, environmental protection, and sustainable development. <a href="https://www.ife-owl.de/ueber-uns/team/upping-johannes">Prof. Johannes Üpping</a> (TH OWL) is both a founding member of the foundation and now an active research partner of SmInReSy.</p></div>
+      </details>
+      <details class="news-item">
+        <summary>
+          <span class="news-summary-main"><time>07/2026</time><span class="tag">Conference</span><span class="news-title">Invitation to the ACI Conference</span></span>
+          <span class="chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="news-body"><p>I have been invited to present my SIL concept as a poster at the <a href="https://www.aciconf.org/aci2026">ACI Conference</a> (Animal-Computer Interaction) in December.</p></div>
+      </details>
+      <details class="news-item">
+        <summary>
+          <span class="news-summary-main"><time>04/2026</time><span class="tag">Conference</span><span class="news-title">Visit to Leuven (Belgium)</span></span>
+          <span class="chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="news-body"><p>I was represented at the 1st International Day of Insects to exchange ideas with specialists and to meet again with the team around Dr. Reckhaus, who also run the "insect-respect" initiative.</p></div>
+      </details>
     </div>
   </section>
 
